@@ -66,23 +66,22 @@ def calcular_compatibilidad(usuario, pais):
     else:
         explicacion.append("La comida no coincide.")
 
-    # Comparar océanos (permite varios o ninguno)
-    if not usuario["oceanos"] and not pais["oceanos"]:
+    # Comparar océanos (coincidencia exacta)
+    if set(usuario["oceanos"]) == set(pais["oceanos"]):
         coincidencias += 1
-        explicacion.append("Ninguno limita con océano (coincide).")
-    elif any(o in pais["oceanos"] for o in usuario["oceanos"]):
-        coincidencias += 1
-        explicacion.append("Coincide al menos un océano.")
+        if not usuario["oceanos"]:
+            explicacion.append("Ninguno limita con océano (coincide exactamente).")
+        else:
+            explicacion.append("Coinciden exactamente los océanos.")
     else:
-        explicacion.append("Los océanos no coinciden.")
+        explicacion.append("Los océanos no coinciden exactamente.")
 
-    # Comparar colores de bandera
-    coincidencias_bandera = sum(1 for color in usuario["bandera"] if color in pais["bandera"])
-    if coincidencias_bandera >= 2:
+    # Comparar colores de bandera (coincidencia exacta)
+    if set(usuario["bandera"]) == set(pais["bandera"]):
         coincidencias += 1
-        explicacion.append("Coinciden varios colores de la bandera.")
+        explicacion.append("Coinciden exactamente los colores de la bandera.")
     else:
-        explicacion.append("Los colores de la bandera no coinciden.")
+        explicacion.append("Los colores de la bandera no coinciden exactamente.")
 
     porcentaje = (coincidencias / total_criterios) * 100
     return porcentaje, explicacion
