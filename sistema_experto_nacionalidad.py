@@ -39,7 +39,21 @@ paises = {
     "italia": {"idioma": "italiano", "comida": "pizza", "oceanos": [], "bandera": ["verde", "blanco", "rojo"]},
     "alemania": {"idioma": "aleman", "comida": "salchicha", "oceanos": [], "bandera": ["negro", "rojo", "amarillo"]},
     "china": {"idioma": "chino", "comida": "arroz frito", "oceanos": ["pacifico"], "bandera": ["rojo", "amarillo"]},
-    "japon": {"idioma": "japones", "comida": "sushi", "oceanos": ["pacifico"], "bandera": ["blanco", "rojo"]}
+    "japon": {"idioma": "japones", "comida": "sushi", "oceanos": ["pacifico"], "bandera": ["blanco", "rojo"]},
+    "portugal": {"idioma": "portugues", "comida": "bacalao", "oceanos": ["atlantico"], "bandera": ["rojo", "verde"]},
+    "rusia": {"idioma": "ruso", "comida": "borsch", "oceanos": ["artico", "pacifico"], "bandera": ["blanco", "azul", "rojo"]},
+    "australia": {"idioma": "ingles", "comida": "meat pie", "oceanos": ["indico", "pacifico"], "bandera": ["azul", "rojo", "blanco"]},
+    "egipto": {"idioma": "arabe", "comida": "koshari", "oceanos": ["atlantico"], "bandera": ["rojo", "blanco", "negro", "amarillo"]},
+    "sudafrica": {"idioma": "ingles", "comida": "bobotie", "oceanos": ["atlantico", "indico"], "bandera": ["verde", "amarillo", "negro", "blanco", "rojo", "azul"]},
+    "india": {"idioma": "hindi", "comida": "curry", "oceanos": ["indico"], "bandera": ["naranja", "blanco", "verde", "azul"]},
+    "marruecos": {"idioma": "arabe", "comida": "cuscus", "oceanos": ["atlantico"], "bandera": ["rojo", "verde"]},
+    "turquia": {"idioma": "turco", "comida": "kebab", "oceanos": ["atlantico"], "bandera": ["rojo", "blanco"]},
+    "grecia": {"idioma": "griego", "comida": "moussaka", "oceanos": ["atlantico"], "bandera": ["azul", "blanco"]},
+    "noruega": {"idioma": "noruego", "comida": "salmon", "oceanos": ["atlantico", "artico"], "bandera": ["rojo", "azul", "blanco"]},
+    "suecia": {"idioma": "sueco", "comida": "albondigas", "oceanos": ["atlantico"], "bandera": ["azul", "amarillo"]},
+    "finlandia": {"idioma": "fines", "comida": "karjalanpiirakka", "oceanos": ["atlantico", "artico"], "bandera": ["azul", "blanco"]},
+    "corea_sur": {"idioma": "coreano", "comida": "kimchi", "oceanos": ["pacifico"], "bandera": ["blanco", "rojo", "azul", "negro"]},
+    "arabia_saudita": {"idioma": "arabe", "comida": "kabsa", "oceanos": [], "bandera": ["verde", "blanco"]}
 }
 
 # -----------------------
@@ -133,7 +147,6 @@ if __name__ == "__main__":
         print("❌ No hay coincidencias suficientes para determinar la nacionalidad.")
     else:
         print(f"✅ La nacionalidad más probable es: {mejor_pais.upper()} ({mejor_porcentaje:.1f}% de compatibilidad)\n")
-
         print("📘 Explicación del resultado:")
         for e in mejor_explicacion:
             print(f" - {e}")
