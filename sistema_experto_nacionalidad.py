@@ -64,42 +64,48 @@ def pedir_datos_usuario():
 # Cálculo de compatibilidad y explicación
 # -----------------------
 def calcular_compatibilidad(usuario, pais):
-    total_criterios = 4
-    coincidencias = 0
     explicacion = []
-
-    # Comparar idioma
+    porcentaje = 0.0
+    # Idioma
     if usuario["idioma"] == pais["idioma"]:
-        coincidencias += 1
-        explicacion.append("Coincide el idioma.")
+        porcentaje += 25
+        explicacion.append("Coincide el idioma (+25%).")
     else:
-        explicacion.append("El idioma no coincide.")
+        explicacion.append("El idioma no coincide (+0%).")
 
-    # Comparar comida
+    # Comida
     if usuario["comida"] == pais["comida"]:
-        coincidencias += 1
-        explicacion.append("Coincide la comida típica.")
+        porcentaje += 25
+        explicacion.append("Coincide la comida típica (+25%).")
     else:
-        explicacion.append("La comida no coincide.")
+        explicacion.append("La comida no coincide (+0%).")
 
-    # Comparar océanos (coincidencia exacta)
-    if set(usuario["oceanos"]) == set(pais["oceanos"]):
-        coincidencias += 1
-        if not usuario["oceanos"]:
-            explicacion.append("Ninguno limita con océano (coincide exactamente).")
+    # Océanos (proporcional)
+    pais_oceanos = set(pais["oceanos"])
+    usuario_oceanos = set(usuario["oceanos"])
+    if pais_oceanos:
+        coincidencias_oceanos = len(pais_oceanos & usuario_oceanos)
+        prop_oceanos = coincidencias_oceanos / len(pais_oceanos)
+        porcentaje += prop_oceanos * 25
+        explicacion.append(f"Coincidencia de océanos: {coincidencias_oceanos} de {len(pais_oceanos)} (+{prop_oceanos*25:.2f}%).")
+    else:
+        if not usuario_oceanos:
+            porcentaje += 25
+            explicacion.append("Ninguno limita con océano (+25%).")
         else:
-            explicacion.append("Coinciden exactamente los océanos.")
-    else:
-        explicacion.append("Los océanos no coinciden exactamente.")
+            explicacion.append("El país no limita con océanos (+0%).")
 
-    # Comparar colores de bandera (coincidencia exacta)
-    if set(usuario["bandera"]) == set(pais["bandera"]):
-        coincidencias += 1
-        explicacion.append("Coinciden exactamente los colores de la bandera.")
+    # Colores de bandera (proporcional)
+    pais_colores = set(pais["bandera"])
+    usuario_colores = set(usuario["bandera"])
+    if pais_colores:
+        coincidencias_colores = len(pais_colores & usuario_colores)
+        prop_colores = coincidencias_colores / len(pais_colores)
+        porcentaje += prop_colores * 25
+        explicacion.append(f"Coincidencia de colores de bandera: {coincidencias_colores} de {len(pais_colores)} (+{prop_colores*25:.2f}%).")
     else:
-        explicacion.append("Los colores de la bandera no coinciden exactamente.")
+        explicacion.append("El país no tiene colores de bandera definidos (+0%).")
 
-    porcentaje = (coincidencias / total_criterios) * 100
     return porcentaje, explicacion
 
 # -----------------------
