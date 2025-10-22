@@ -23,7 +23,23 @@ paises = {
     "cuba": {"idioma": "español", "comida": "ropa vieja", "oceanos": ["atlantico"], "bandera": ["rojo", "azul", "blanco"]},
     "dominicana": {"idioma": "español", "comida": "mangú", "oceanos": ["atlantico"], "bandera": ["azul", "rojo", "blanco"]},
     "estados_unidos": {"idioma": "ingles", "comida": "hamburguesa", "oceanos": ["pacifico", "atlantico"], "bandera": ["rojo", "blanco", "azul"]},
-    "canada": {"idioma": "ingles", "comida": "jarabe de arce", "oceanos": ["atlantico", "pacifico"], "bandera": ["rojo", "blanco"]}
+    "canada": {"idioma": "ingles", "comida": "jarabe de arce", "oceanos": ["atlantico", "pacifico"], "bandera": ["rojo", "blanco"]},
+    "uruguay": {"idioma": "español", "comida": "chivito", "oceanos": ["atlantico"], "bandera": ["celeste", "blanco", "amarillo"]},
+    "paraguay": {"idioma": "español", "comida": "sopa paraguaya", "oceanos": [], "bandera": ["rojo", "blanco", "azul"]},
+    "el_salvador": {"idioma": "español", "comida": "pupusa", "oceanos": ["pacifico"], "bandera": ["azul", "blanco"]},
+    "costa_rica": {"idioma": "español", "comida": "gallo pinto", "oceanos": ["pacifico", "atlantico"], "bandera": ["azul", "blanco", "rojo"]},
+    "panama": {"idioma": "español", "comida": "sancocho", "oceanos": ["pacifico", "atlantico"], "bandera": ["rojo", "azul", "blanco"]},
+    "nicaragua": {"idioma": "español", "comida": "gallo pinto", "oceanos": ["pacifico", "atlantico"], "bandera": ["azul", "blanco"]},
+    "jamaica": {"idioma": "ingles", "comida": "jerk chicken", "oceanos": ["atlantico"], "bandera": ["negro", "verde", "amarillo"]},
+    "haiti": {"idioma": "frances", "comida": "griot", "oceanos": ["atlantico"], "bandera": ["azul", "rojo"]},
+    "belice": {"idioma": "ingles", "comida": "rice and beans", "oceanos": ["atlantico"], "bandera": ["azul", "rojo"]},
+    "puerto_rico": {"idioma": "español", "comida": "mofongo", "oceanos": ["atlantico"], "bandera": ["rojo", "blanco", "azul"]},
+    "españa": {"idioma": "español", "comida": "paella", "oceanos": ["atlantico"], "bandera": ["rojo", "amarillo"]},
+    "francia": {"idioma": "frances", "comida": "baguette", "oceanos": ["atlantico"], "bandera": ["azul", "blanco", "rojo"]},
+    "italia": {"idioma": "italiano", "comida": "pizza", "oceanos": [], "bandera": ["verde", "blanco", "rojo"]},
+    "alemania": {"idioma": "aleman", "comida": "salchicha", "oceanos": [], "bandera": ["negro", "rojo", "amarillo"]},
+    "china": {"idioma": "chino", "comida": "arroz frito", "oceanos": ["pacifico"], "bandera": ["rojo", "amarillo"]},
+    "japon": {"idioma": "japones", "comida": "sushi", "oceanos": ["pacifico"], "bandera": ["blanco", "rojo"]}
 }
 
 # -----------------------
