@@ -415,13 +415,20 @@ def leer_datos_desde_archivo(nombre_archivo="datos_entrada.txt"):
 # Ejecución principal
 # -----------------------
 if __name__ == "__main__":
-    # Leer datos desde archivo
-    usuario = leer_datos_desde_archivo("datos_entrada.txt")
-    
+    import argparse
+    import sys
+
+    parser = argparse.ArgumentParser(description="Sistema experto: determinar nacionalidad a partir de un archivo de datos (clave = valor).")
+    parser.add_argument('archivo', nargs='?', default='datos_entrada.txt', help='Archivo de texto con los datos (por defecto: datos_entrada.txt)')
+    args = parser.parse_args()
+
+    # Leer datos desde archivo (usar el argumento de línea de comandos)
+    usuario = leer_datos_desde_archivo(args.archivo)
+
     if usuario is None:
         print("No se pudieron cargar los datos. Terminando programa.")
-        exit(1)
-    
+        sys.exit(1)
+
     # Ejecutar motor de inferencia
     hechos_inferidos = motor_inferencia(usuario)
     
