@@ -53,6 +53,7 @@ reglas = [
     {"condiciones": [("moneda", "==", "real")], "conclusion": "moneda_real"},
     {"condiciones": [("moneda", "==", "yuan")], "conclusion": "moneda_yuan"},
     {"condiciones": [("moneda", "==", "yen")], "conclusion": "moneda_yen"},
+    {"condiciones": [("moneda", "==", "bolivar")], "conclusion": "moneda_bolivar"},
     
     # Reglas de clima
     {"condiciones": [("clima", "==", "tropical")], "conclusion": "clima_tropical"},
@@ -153,13 +154,13 @@ reglas = [
     {"condiciones": [("gobierno", "==", "republica")], "conclusion": "gobierno_republicano"},
     {"condiciones": [("gobierno", "==", "monarquia")], "conclusion": "gobierno_monarquico"},
     
-    # Reglas compuestas para identificación final (nivel 4 - Colombia)
+    # Colombia
     {"condiciones": ["caracteristica_tropical_arepa", "geografia_bicostal_americana", "pais_caribeno", "bandera_tricolor_latina", "economia_cafetera", "tradicion_carnaval"], "conclusion": "colombia"},
     {"condiciones": ["caracteristica_caribe_arepa", "pais_bicostal", "bandera_tricolor_latina", "clima_tropical"], "conclusion": "colombia"},
     
     # Venezuela
-    {"condiciones": ["caracteristica_caribe_arepa", "costa_atlantico", "bandera_tricolor_latina", "economia_petrolera"], "conclusion": "venezuela"},
-    {"condiciones": ["region_hispanoamerica", "pais_arepa", "pais_caribeno", "bandera_tricolor_latina", "moneda_peso"], "conclusion": "venezuela"},
+    {"condiciones": ["caracteristica_caribe_arepa", "costa_atlantico", "bandera_tricolor_latina", "economia_petrolera", "moneda_bolivar"], "conclusion": "venezuela"},
+    {"condiciones": ["region_hispanoamerica", "pais_arepa", "pais_caribeno", "bandera_tricolor_latina", "moneda_bolivar"], "conclusion": "venezuela"},
     
     # Argentina
     {"condiciones": ["caracteristica_cono_sur_asado", "geografia_atlantico_sur_hispano", "bandera_celeste_blanco", "tradicion_tango"], "conclusion": "argentina"},
@@ -210,7 +211,7 @@ def motor_inferencia(hechos_iniciales):
     hechos = set()
     
     # Convertir hechos iniciales en formato simbólico
-    print("\n📋 Hechos iniciales:")
+    print("\nHechos iniciales:")
     
     # 1. Idioma
     if hechos_iniciales.get("idioma"):
@@ -333,7 +334,7 @@ def motor_inferencia(hechos_iniciales):
             # Si todas las condiciones se cumplen, agregar la conclusión
             if todas_cumplen:
                 hechos.add(regla["conclusion"])
-                print(f"✅ Regla activada: SI {' and '.join([str(c) if isinstance(c, str) else f'{c[0]} {c[1]} {c[2]}' for c in regla['condiciones']])} → ENTONCES {regla['conclusion']}")
+                print(f"Regla activada: SI {' and '.join([str(c) if isinstance(c, str) else f'{c[0]} {c[1]} {c[2]}' for c in regla['condiciones']])} → ENTONCES {regla['conclusion']}")
                 cambios = True
     
     return hechos
@@ -349,7 +350,7 @@ def leer_datos_desde_archivo(nombre_archivo="datos_entrada.txt"):
     """
     print("=== SISTEMA EXPERTO: DETERMINACIÓN DE NACIONALIDAD ===")
     print("(Motor de encadenamiento hacia adelante simbólico)\n")
-    print(f"📂 Leyendo datos desde: {nombre_archivo}\n")
+    print(f"Leyendo datos desde: {nombre_archivo}\n")
     
     datos = {
         "idioma": "",
@@ -399,15 +400,15 @@ def leer_datos_desde_archivo(nombre_archivo="datos_entrada.txt"):
                         # Son valores simples
                         datos[clave] = valor
         
-        print("✅ Datos cargados correctamente desde el archivo.\n")
+        print("Datos cargados correctamente desde el archivo.\n")
         return datos
     
     except FileNotFoundError:
-        print(f"❌ Error: No se encontró el archivo '{nombre_archivo}'")
-        print("💡 Crea un archivo 'datos_entrada.txt' con el formato adecuado.")
+        print(f"Error: No se encontró el archivo '{nombre_archivo}'")
+        print("Crea un archivo 'datos_entrada.txt' con el formato adecuado.")
         return None
     except Exception as e:
-        print(f"❌ Error al leer el archivo: {e}")
+        print(f"Error al leer el archivo: {e}")
         return None
 
 # -----------------------
@@ -418,7 +419,7 @@ if __name__ == "__main__":
     usuario = leer_datos_desde_archivo("datos_entrada.txt")
     
     if usuario is None:
-        print("⚠️  No se pudieron cargar los datos. Terminando programa.")
+        print("No se pudieron cargar los datos. Terminando programa.")
         exit(1)
     
     # Ejecutar motor de inferencia
@@ -483,7 +484,7 @@ if __name__ == "__main__":
     print("\n--- CONCLUSIÓN ---")
     if paises_encontrados:
         for pais in paises_encontrados:
-            print(f"🌎 Nacionalidad inferida: {pais.upper()}")
+            print(f"Nacionalidad inferida: {pais.upper()}")
     else:
-        print("❌ No se pudo inferir la nacionalidad con los datos proporcionados.")
-        print("💡 Hechos derivados:", hechos_inferidos)
+        print("No se pudo inferir la nacionalidad con los datos proporcionados.")
+        print("Hechos derivados:", hechos_inferidos)
