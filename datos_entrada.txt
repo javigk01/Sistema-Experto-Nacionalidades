@@ -1,0 +1,25 @@
+# Archivo de datos de entrada para el Sistema Experto
+# Formato: clave = valor
+# Para listas, separar valores por comas
+# Líneas que comienzan con # son comentarios
+
+idioma = español
+comida = arepa
+continente = america
+oceanos = pacifico, atlantico
+mares = mar caribe
+bandera = amarillo, azul, rojo
+moneda = peso
+clima = tropical
+religion = catolica
+hemisferio = norte
+gobierno = republica
+capital = bogota
+deporte = futbol
+producto = cafe
+montañas = si
+selva = si
+desierto = no
+es_isla = no
+poblacion = grande
+tradicion = carnaval
